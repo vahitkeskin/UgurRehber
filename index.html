@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="tr" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rehberlik Planı & Excel Tablo PDF Oluşturucu</title>
-  <meta name="description" content="Tüm başlıkları, sütunları ve hücre verilerini özelleştirebileceğiniz, anlık canlı PDF önizleme ve indirme desteği sunan profesyonel plan hazırlama uygulaması.">
+  <meta name="description"
+    content="Tüm başlıkları, sütunları ve hücre verilerini özelleştirebileceğiniz, anlık canlı PDF önizleme ve indirme desteği sunan profesyonel plan hazırlama uygulaması.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
   <!-- Google Fonts: Inter & Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -21,6 +25,7 @@
   <!-- html2pdf bundle (local with CDN fallback) -->
   <script src="libs/html2pdf.bundle.min.js"></script>
 </head>
+
 <body>
   <!-- Header / Nav -->
   <header class="app-header">
@@ -40,7 +45,8 @@
         <span>Örnek Şablonu Yükle</span>
       </button>
 
-      <button id="btn-paste-excel" class="btn btn-secondary" title="Excel veya Google E-Tablolar'dan kopyalanan satırları yapıştır">
+      <button id="btn-paste-excel" class="btn btn-secondary"
+        title="Excel veya Google E-Tablolar'dan kopyalanan satırları yapıştır">
         <i class="fa-solid fa-paste"></i>
         <span>Excel'den Yapıştır</span>
       </button>
@@ -99,12 +105,15 @@
             <div class="form-grid">
               <div class="form-group col-12">
                 <label for="input-institution">Kurum / Okul Üst Başlığı (İsteğe Bağlı)</label>
-                <input type="text" id="input-institution" class="form-control" placeholder="Örn: UĞUR OKULLARI VİRANŞEHİR KAMPÜSÜ" value="UĞUR OKULLARI VİRANŞEHİR KAMPÜSÜ">
+                <input type="text" id="input-institution" class="form-control"
+                  placeholder="Örn: UĞUR OKULLARI VİRANŞEHİR KAMPÜSÜ" value="VİRANŞEHİR ÖZEL UĞUR ORTA">
               </div>
 
               <div class="form-group col-12">
                 <label for="input-service">Alt Birim / Servis Başlığı (İsteğe Bağlı)</label>
-                <input type="text" id="input-service" class="form-control" placeholder="Örn: REHBERLİK VE PSİKOLOJİK DANIŞMANLIK SERVİSİ" value="REHBERLİK VE PSİKOLOJİK DANIŞMA SERVİSİ">
+                <input type="text" id="input-service" class="form-control"
+                  placeholder="Örn: REHBERLİK VE PSİKOLOJİK DANIŞMANLIK SERVİSİ"
+                  value="REHBERLİK VE PSİKOLOJİK DANIŞMA SERVİSİ">
               </div>
 
               <div class="form-group col-4">
@@ -114,12 +123,15 @@
 
               <div class="form-group col-8">
                 <label for="input-main-title">Ana Tablo Başlığı (Örn: Ay / Plan Adı)</label>
-                <input type="text" id="input-main-title" class="form-control font-weight-bold" placeholder="Örn: HAZİRAN" value="HAZİRAN">
+                <input type="text" id="input-main-title" class="form-control font-weight-bold"
+                  placeholder="Örn: HAZİRAN" value="HAZİRAN">
               </div>
 
               <div class="form-group col-12">
                 <label for="input-subtitle">Eğitim Öğretim Yılı / Açıklama</label>
-                <input type="text" id="input-subtitle" class="form-control" placeholder="Örn: 2026-2027 EĞİTİM ÖĞRETİM YILI REHBERLİK FAALİYET PLANI" value="2026-2027 EĞİTİM ÖĞRETİM YILI REHBERLİK FAALİYET PLANI">
+                <input type="text" id="input-subtitle" class="form-control"
+                  placeholder="Örn: 2026-2027 EĞİTİM ÖĞRETİM YILI REHBERLİK FAALİYET PLANI"
+                  value="2026-2027 EĞİTİM ÖĞRETİM YILI REHBERLİK FAALİYET PLANI">
               </div>
             </div>
           </div>
@@ -158,7 +170,8 @@
               <span class="badge-count" id="rows-count-badge">4 Dolu Satır</span>
             </div>
             <div class="rows-actions-right">
-              <button id="btn-quick-empty-rows" class="btn btn-xs btn-outline" title="Görseldeki gibi alt kısma 10 adet boş kılavuz satırı ekler">
+              <button id="btn-quick-empty-rows" class="btn btn-xs btn-outline"
+                title="Görseldeki gibi alt kısma 10 adet boş kılavuz satırı ekler">
                 <i class="fa-solid fa-grip-lines"></i> +10 Boş Satır
               </button>
               <button id="btn-add-row-top" class="btn btn-xs btn-primary">
@@ -201,13 +214,15 @@
               <div class="form-group col-6">
                 <label for="input-sig-left-title">Sol İmza Unvanı</label>
                 <input type="text" id="input-sig-left-title" class="form-control" value="Hazırlayan">
-                <input type="text" id="input-sig-left-name" class="form-control mt-1" placeholder="Ad Soyad / Unvan" value="Rehber Öğretmen / Psikolojik Danışman">
+                <input type="text" id="input-sig-left-name" class="form-control mt-1" placeholder="Ad Soyad / Unvan"
+                  value="Rehber Öğretmen / Psikolojik Danışman">
               </div>
 
               <div class="form-group col-6">
                 <label for="input-sig-right-title">Sağ İmza Unvanı</label>
                 <input type="text" id="input-sig-right-title" class="form-control" value="Uygundur / Tasdik Olunur">
-                <input type="text" id="input-sig-right-name" class="form-control mt-1" placeholder="Ad Soyad / Unvan" value="Okul Müdürü">
+                <input type="text" id="input-sig-right-name" class="form-control mt-1" placeholder="Ad Soyad / Unvan"
+                  value="Okul Müdürü">
               </div>
             </div>
           </div>
@@ -222,7 +237,8 @@
             </span>
           </summary>
           <div class="section-card-content">
-            <p class="section-hint">Tüm girdiğiniz verileri daha sonra tekrar kullanmak için bilgisayarınıza kaydedebilir veya yükleyebilirsiniz.</p>
+            <p class="section-hint">Tüm girdiğiniz verileri daha sonra tekrar kullanmak için bilgisayarınıza
+              kaydedebilir veya yükleyebilirsiniz.</p>
             <div class="d-flex gap-2">
               <button id="btn-export-json" class="btn btn-sm btn-secondary">
                 <i class="fa-solid fa-download"></i> Verileri JSON Olarak Kaydet
@@ -241,11 +257,13 @@
     <main class="panel preview-panel" id="preview-panel">
       <div class="panel-header preview-header">
         <div class="preview-tabs" role="tablist">
-          <button id="tab-btn-doc" class="tab-btn active" role="tab" aria-selected="true" title="Her harf yazıldığında anında güncellenen canlı A4 görünümü">
+          <button id="tab-btn-doc" class="tab-btn active" role="tab" aria-selected="true"
+            title="Her harf yazıldığında anında güncellenen canlı A4 görünümü">
             <i class="fa-solid fa-display"></i>
             <span>⚡ Canlı Belge Önizleme</span>
           </button>
-          <button id="tab-btn-pdf" class="tab-btn" role="tab" aria-selected="false" title="Vektörel gerçek PDF dosyası çıktısı (iframe görüntüleyici)">
+          <button id="tab-btn-pdf" class="tab-btn" role="tab" aria-selected="false"
+            title="Vektörel gerçek PDF dosyası çıktısı (iframe görüntüleyici)">
             <i class="fa-solid fa-file-pdf"></i>
             <span>📄 Gerçek PDF Dosyası (Canlı)</span>
           </button>
@@ -257,15 +275,19 @@
             <span class="status-text" id="status-text">Canlı Senkronize</span>
           </div>
 
-          <button id="btn-refresh-pdf" class="btn btn-xs btn-secondary" title="Gerçek PDF dosyasını yeniden oluştur ve yenile">
+          <button id="btn-refresh-pdf" class="btn btn-xs btn-secondary"
+            title="Gerçek PDF dosyasını yeniden oluştur ve yenile">
             <i class="fa-solid fa-arrows-rotate"></i> PDF'i Yenile
           </button>
 
           <div class="zoom-controls">
-            <button id="btn-zoom-out" class="btn btn-icon btn-xs" title="Uzaklaştır"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+            <button id="btn-zoom-out" class="btn btn-icon btn-xs" title="Uzaklaştır"><i
+                class="fa-solid fa-magnifying-glass-minus"></i></button>
             <span id="zoom-level-text" class="zoom-text">100%</span>
-            <button id="btn-zoom-in" class="btn btn-icon btn-xs" title="Yakınlaştır"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <button id="btn-zoom-reset" class="btn btn-icon btn-xs" title="Tüm Kağıdı Ekrana Sığdır (Varsayılan)"><i class="fa-solid fa-expand"></i></button>
+            <button id="btn-zoom-in" class="btn btn-icon btn-xs" title="Yakınlaştır"><i
+                class="fa-solid fa-magnifying-glass-plus"></i></button>
+            <button id="btn-zoom-reset" class="btn btn-icon btn-xs" title="Tüm Kağıdı Ekrana Sığdır (Varsayılan)"><i
+                class="fa-solid fa-expand"></i></button>
           </div>
         </div>
       </div>
@@ -284,9 +306,10 @@
                     <img src="assets/ugur-logo.svg" alt="Logo" class="doc-logo" onerror="this.style.display='none'">
                   </div>
                   <div class="doc-institution-titles">
-                    <h1 class="doc-inst-name" id="preview-institution">UĞUR OKULLARI VİRANŞEHİR KAMPÜSÜ</h1>
+                    <h1 class="doc-inst-name" id="preview-institution">VİRANŞEHİR ÖZEL UĞUR ORTA OKULU</h1>
                     <h2 class="doc-service-name" id="preview-service">REHBERLİK VE PSİKOLOJİK DANIŞMA SERVİSİ</h2>
-                    <h3 class="doc-subtitle-name" id="preview-subtitle">2026-2027 EĞİTİM ÖĞRETİM YILI REHBERLİK FAALİYET PLANI</h3>
+                    <h3 class="doc-subtitle-name" id="preview-subtitle">2026-2027 EĞİTİM ÖĞRETİM YILI REHBERLİK FAALİYET
+                      PLANI</h3>
                   </div>
                   <div class="doc-header-spacer"></div>
                 </div>
@@ -407,7 +430,8 @@
 
       <!-- Setting: Empty Fill Rows -->
       <div class="setting-group">
-        <label class="setting-label" for="input-empty-rows-count">Alt Boş Satır Sayısı (Excel Izgara Görünümü İçin)</label>
+        <label class="setting-label" for="input-empty-rows-count">Alt Boş Satır Sayısı (Excel Izgara Görünümü
+          İçin)</label>
         <div class="d-flex align-items-center gap-2">
           <input type="range" id="input-empty-rows-count" min="0" max="25" value="12" class="form-range">
           <span id="label-empty-rows-count" class="badge-count">12 Satır</span>
@@ -430,7 +454,8 @@
       </div>
       <div class="dialog-body">
         <p class="dialog-desc">
-          Excel, Google Sheets veya Word tablosundan kopyaladığınız satırları aşağıdaki kutuya yapıştırın (Ctrl+V / Cmd+V). Sistem sekmelerle ayrılmış sütunları otomatik algılayıp tabloya dönüştürecektir.
+          Excel, Google Sheets veya Word tablosundan kopyaladığınız satırları aşağıdaki kutuya yapıştırın (Ctrl+V /
+          Cmd+V). Sistem sekmelerle ayrılmış sütunları otomatik algılayıp tabloya dönüştürecektir.
         </p>
         <textarea id="textarea-excel-paste" class="form-control code-font" rows="8" placeholder="Örnek:
 1	Bilinçli Teknoloji Kullanımı	01-04/06/2027		Faaliyet türü:Seminer\nhedef kitle: Öğrenci	Tüm Sınıflar
@@ -459,4 +484,5 @@
   <!-- App Logic -->
   <script src="js/app.js"></script>
 </body>
+
 </html>
