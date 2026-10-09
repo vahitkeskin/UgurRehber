@@ -1,8 +1,8 @@
-# Uğur Okulları Rehberlik Planı & Excel Tablo PDF Oluşturucu
+# Viranşehir Özel Uğur Orta Okulu Rehberlik Planı & Excel Tablo PDF Oluşturucu
 
-Uğur Okulları Viranşehir Kampüsü Rehberlik ve Psikolojik Danışma Hizmetleri için geliştirilmiş, Excel benzeri kolay veri girişi ve anlık canlı A4 PDF önizlemesi/çıktısı sunan modern web uygulaması.
+Viranşehir Özel Uğur Orta Okulu Rehberlik ve Psikolojik Danışma Hizmetleri için geliştirilmiş, Excel benzeri kolay veri girişi ve anlık canlı A4 PDF önizlemesi/çıktısı sunan modern web uygulaması.
 
-![Uğur Logo](assets/ugur-logo.svg)
+![Uğur Logo](assets/ugurokullariviransehirkampusu.jpg)
 
 ---
 

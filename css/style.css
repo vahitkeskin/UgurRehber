@@ -114,8 +114,10 @@ html, body {
 
 .brand-img {
   height: 38px;
-  width: auto;
-  object-fit: contain;
+  width: 38px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
 .brand-text {
@@ -885,9 +887,10 @@ html, body {
 }
 
 .doc-logo {
-  max-height: 48px;
-  max-width: 80px;
-  object-fit: contain;
+  max-height: 52px;
+  max-width: 52px;
+  border-radius: 6px;
+  object-fit: cover;
 }
 
 .doc-institution-titles {

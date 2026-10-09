@@ -8,7 +8,7 @@
 
   // --- Varsayılan Başlangıç Verileri (ornekexcel.jpg baz alınarak) ---
   const DEFAULT_STATE = {
-    institution: "UĞUR OKULLARI VİRANŞEHİR KAMPÜSÜ",
+    institution: "VİRANŞEHİR ÖZEL UĞUR ORTA OKULU",
     service: "REHBERLİK VE PSİKOLOJİK DANIŞMA SERVİSİ",
     mainTitle: "HAZİRAN",
     iconText: "✚",
@@ -207,7 +207,11 @@
     try {
       const stored = localStorage.getItem('ugur_rehber_state');
       if (stored) {
-        return JSON.parse(stored);
+        const parsed = JSON.parse(stored);
+        if (parsed.institution === "UĞUR OKULLARI VİRANŞEHİR KAMPÜSÜ" || parsed.institution === "VİRANŞEHİR ÖZEL UĞUR ORTA") {
+          parsed.institution = "VİRANŞEHİR ÖZEL UĞUR ORTA OKULU";
+        }
+        return parsed;
       }
     } catch (e) {
       console.warn("Kayıtlı veri yüklenirken hata oluştu:", e);
