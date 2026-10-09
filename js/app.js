@@ -112,7 +112,7 @@
     editorTableBody: document.getElementById('editor-table-body'),
     btnAddRow: document.getElementById('btn-add-row'),
     btnAddRowTop: document.getElementById('btn-add-row-top'),
-    btnQuickEmptyRows: document.getElementById('btn-quick-empty-rows'),
+    btnDeleteRow: document.getElementById('btn-delete-row') || document.getElementById('btn-quick-empty-rows'),
     btnClearTable: document.getElementById('btn-clear-table'),
     rowsCountBadge: document.getElementById('rows-count-badge'),
 
@@ -672,13 +672,22 @@
     showToast("Tüm satırlar temizlendi.", "info");
   }
 
-  function addQuickEmptyRows(count = 10) {
-    state.emptyRowsCount = (parseInt(state.emptyRowsCount, 10) || 0) + count;
-    DOM.inputEmptyRowsCount.value = state.emptyRowsCount;
-    DOM.labelEmptyRowsCount.textContent = `${state.emptyRowsCount} Satır`;
-    renderLiveDocument();
-    schedulePdfUpdate(800);
-    showToast(`${count} adet boş kılavuz satırı eklendi.`, "success");
+  function deleteLastRow() {
+    if (state.rows.length > 0) {
+      state.rows.pop();
+      renderAll();
+      schedulePdfUpdate(600);
+      showToast("Son satır silindi.", "info");
+    } else if (state.emptyRowsCount > 0) {
+      state.emptyRowsCount--;
+      DOM.inputEmptyRowsCount.value = state.emptyRowsCount;
+      DOM.labelEmptyRowsCount.textContent = `${state.emptyRowsCount} Satır`;
+      renderLiveDocument();
+      schedulePdfUpdate(600);
+      showToast("Boş satır silindi.", "info");
+    } else {
+      showToast("Tabloda silinecek satır kalmadı.", "error");
+    }
   }
 
   // --- Sütun İşlemleri ---
@@ -923,7 +932,9 @@
     DOM.btnResetDefaultColumns.addEventListener('click', resetDefaultColumns);
     DOM.btnAddRow.addEventListener('click', () => addNewRow(false));
     DOM.btnAddRowTop.addEventListener('click', () => addNewRow(false));
-    DOM.btnQuickEmptyRows.addEventListener('click', () => addQuickEmptyRows(10));
+    if (DOM.btnDeleteRow) {
+      DOM.btnDeleteRow.addEventListener('click', deleteLastRow);
+    }
     DOM.btnClearTable.addEventListener('click', () => {
       if (confirm("Tablodaki tüm satırlar silinsin mi?")) {
         clearAllRows();
