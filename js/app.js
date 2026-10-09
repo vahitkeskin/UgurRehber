@@ -9,7 +9,7 @@
   // --- Varsayılan Başlangıç Verileri (ornekexcel.jpg baz alınarak) ---
   const DEFAULT_STATE = {
     institution: "VİRANŞEHİR ÖZEL UĞUR ORTA OKULU",
-    service: "REHBERLİK VE PSİKOLOJİK DANIŞMA SERVİSİ",
+    service: "",
     mainTitle: "HAZİRAN",
     iconText: "✚",
     subtitle: "2026-2027 EĞİTİM ÖĞRETİM YILI REHBERLİK FAALİYET PLANI",
@@ -24,7 +24,7 @@
     theme: "theme-excel",
     gridStyle: "grid-dotted",
     fontSize: "font-md",
-    emptyRowsCount: 12,
+    emptyRowsCount: 1,
 
     columns: [
       { id: "sira", title: "Sıra", width: "5%" },
@@ -210,6 +210,12 @@
         const parsed = JSON.parse(stored);
         if (parsed.institution === "UĞUR OKULLARI VİRANŞEHİR KAMPÜSÜ" || parsed.institution === "VİRANŞEHİR ÖZEL UĞUR ORTA") {
           parsed.institution = "VİRANŞEHİR ÖZEL UĞUR ORTA OKULU";
+        }
+        if (parsed.service === "REHBERLİK VE PSİKOLOJİK DANIŞMA SERVİSİ" || parsed.service === "REHBERLİK VE PSİKOLOJİK DANIŞMANLIK SERVİSİ") {
+          parsed.service = "";
+        }
+        if (parsed.emptyRowsCount === 12 || parsed.emptyRowsCount === undefined) {
+          parsed.emptyRowsCount = 1;
         }
         return parsed;
       }
