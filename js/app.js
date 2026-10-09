@@ -87,6 +87,7 @@
   const DOM = {
     // Üst Butonlar
     btnLoadSample: document.getElementById('btn-load-sample'),
+    btnResetAll: document.getElementById('btn-reset-all'),
     btnPasteExcel: document.getElementById('btn-paste-excel'),
     btnToggleSettings: document.getElementById('btn-toggle-settings'),
     btnPrint: document.getElementById('btn-print'),
@@ -320,6 +321,7 @@
         renderEditorTableHead();
         renderLiveDocument();
         schedulePdfUpdate(800);
+        saveStateToStorage();
       });
 
       const removeBtn = document.createElement('button');
@@ -387,6 +389,7 @@
           // Anında canlı belgeye yansıt
           renderLiveDocument();
           schedulePdfUpdate(1000);
+          saveStateToStorage();
         });
 
         td.appendChild(input);
@@ -760,6 +763,23 @@
     showToast("Örnek Excel şablonu (ornekexcel.jpg) yüklendi!", "success");
   }
 
+  // --- Her Şeyi Sıfırla (Fabrika Ayarlarına Dön) ---
+  function resetEverything() {
+    if (confirm("DİKKAT: Yaptığınız tüm düzenlemeler silinecek ve sayfa ilk varsayılan şablonuna dönecektir.\n\nHer şeyi sıfırlamak istiyor musunuz?")) {
+      try {
+        localStorage.removeItem('ugur_rehber_state');
+      } catch (e) {
+        console.warn("LocalStorage silinemedi:", e);
+      }
+      state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+      syncFormInputsFromState();
+      renderAll();
+      setTimeout(fitDocumentToScreen, 60);
+      schedulePdfUpdate(400);
+      showToast("Tüm veriler ve ayarlar başarıyla sıfırlandı!", "success");
+    }
+  }
+
   // --- JSON Yedekleme / Yükleme ---
   function exportJsonData() {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state, null, 2));
@@ -853,6 +873,7 @@
     renderLiveDocument();
     setTimeout(fitDocumentToScreen, 60);
     schedulePdfUpdate(600);
+    saveStateToStorage();
     showToast(`Sayfa yönü: ${orientation === 'landscape' ? 'Yatay' : 'Dikey'} yapıldı.`, "info");
   }
 
@@ -884,6 +905,9 @@
   function setupEventListeners() {
     // 1. Üst Aksiyonlar
     DOM.btnLoadSample.addEventListener('click', loadSampleTemplate);
+    if (DOM.btnResetAll) {
+      DOM.btnResetAll.addEventListener('click', resetEverything);
+    }
     DOM.btnPasteExcel.addEventListener('click', () => DOM.dialogPasteExcel.showModal());
     DOM.btnClosePasteModal.addEventListener('click', () => DOM.dialogPasteExcel.close());
     DOM.btnCancelPaste.addEventListener('click', () => DOM.dialogPasteExcel.close());
@@ -918,6 +942,7 @@
         state[key] = e.target.value;
         renderLiveDocument();
         schedulePdfUpdate(800);
+        saveStateToStorage();
       });
     });
 
@@ -925,6 +950,7 @@
       state.showSignatures = e.target.checked;
       renderLiveDocument();
       schedulePdfUpdate(600);
+      saveStateToStorage();
     });
 
     // 3. Sütun ve Satır Araç Çubuğu
@@ -1005,24 +1031,28 @@
       state.theme = e.target.value;
       renderLiveDocument();
       schedulePdfUpdate(600);
+      saveStateToStorage();
     });
 
     DOM.selectGridStyle.addEventListener('change', (e) => {
       state.gridStyle = e.target.value;
       renderLiveDocument();
       schedulePdfUpdate(600);
+      saveStateToStorage();
     });
 
     DOM.selectTableFontSize.addEventListener('change', (e) => {
       state.fontSize = e.target.value;
       renderLiveDocument();
       schedulePdfUpdate(600);
+      saveStateToStorage();
     });
 
     DOM.checkShowLogo.addEventListener('change', (e) => {
       state.showLogo = e.target.checked;
       renderLiveDocument();
       schedulePdfUpdate(600);
+      saveStateToStorage();
     });
 
     DOM.inputEmptyRowsCount.addEventListener('input', (e) => {
@@ -1030,6 +1060,7 @@
       DOM.labelEmptyRowsCount.textContent = `${state.emptyRowsCount} Satır`;
       renderLiveDocument();
       schedulePdfUpdate(800);
+      saveStateToStorage();
     });
   }
 
